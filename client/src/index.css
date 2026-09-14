@@ -89,6 +89,11 @@ button { cursor: pointer; }
 .hero-line { position: absolute; height: 1px; background: linear-gradient(90deg, transparent, rgba(85,231,227,.7), transparent); transform-origin: left; animation: scanLine 6s ease-in-out infinite; }
 @keyframes floatOrb { to { transform: translate3d(-28px, 20px, 0) scale(1.06); } }
 @keyframes scanLine { 0%,100% { opacity: .1; transform: scaleX(.35); } 50% { opacity: .7; transform: scaleX(1); } }
+@keyframes signalPulse { 0%,100% { opacity: .5; transform: scale(.96); } 50% { opacity: 1; transform: scale(1.04); } }
+@keyframes dataSweep { 0% { transform: translateX(-120%); opacity: 0; } 18% { opacity: .8; } 70%,100% { transform: translateX(180%); opacity: 0; } }
+@keyframes softFloat { 0%,100% { transform: translate3d(0,0,0); } 50% { transform: translate3d(0,-8px,0); } }
+@keyframes filterIn { from { opacity: 0; transform: translateY(10px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes nodeGlow { 0%,100% { box-shadow: 0 0 0 6px #070b14, 0 0 12px rgba(85,231,227,.16); } 50% { box-shadow: 0 0 0 6px #070b14, 0 0 26px rgba(85,231,227,.46); } }
 
 .device-stage { position: relative; min-height: 540px; }
 .device-panel { position: absolute; border: 1px solid rgba(141,165,209,.24); background: linear-gradient(140deg, rgba(22,32,55,.9), rgba(9,15,28,.7)); box-shadow: 0 28px 80px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.06); backdrop-filter: blur(18px); }
@@ -105,6 +110,19 @@ button { cursor: pointer; }
 .phone-screen { margin: 16px 11px; height: calc(100% - 32px); border-radius: 16px; padding: 14px 10px; background: linear-gradient(150deg, rgba(85,231,227,.16), rgba(91,124,255,.18) 50%, #10172a); }
 .phone-orb { width: 60px; height: 60px; border-radius: 50%; margin: 20px auto; background: radial-gradient(circle at 35% 35%, #e3ffff, var(--accent) 28%, var(--primary) 72%); box-shadow: 0 0 28px rgba(85,231,227,.44); }
 .float-chip { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 18px; color: var(--accent); font: 500 10px 'DM Mono', monospace; letter-spacing: .07em; }
+.device-panel.main { animation: softFloat 7s ease-in-out infinite; }
+.device-panel.phone { animation: softFloat 6s ease-in-out -1.4s infinite; }
+.device-panel.floating { animation: softFloat 5.5s ease-in-out -2.2s infinite; }
+.phone-orb { animation: signalPulse 3.4s ease-in-out infinite; }
+.case-grid { animation: filterIn .38s var(--ease-out) both; }
+.process-node { animation: nodeGlow 4.5s ease-in-out infinite; }
+.process-step:nth-child(2n) .process-node { animation-delay: .7s; }
+.process-step:nth-child(3n) .process-node { animation-delay: 1.4s; }
+.data-flow { position: relative; overflow: hidden; }
+.data-flow::after { content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 24%; background: linear-gradient(90deg, transparent, rgba(85,231,227,.35), transparent); animation: dataSweep 4.5s ease-in-out infinite; pointer-events: none; }
+.case-card-visual { transition: transform .45s var(--ease-out), filter .45s var(--ease-out); }
+.glass-card-hover:hover .case-card-visual { transform: scale(1.025); filter: saturate(1.15); }
+.motion-line { transform-origin: left; animation: scanLine 5.5s ease-in-out infinite; }
 
 .glass-card { border: 1px solid rgba(148,164,189,.16); background: linear-gradient(140deg, rgba(17,26,45,.7), rgba(10,15,27,.58)); box-shadow: inset 0 1px 0 rgba(255,255,255,.045), 0 18px 70px rgba(0,0,0,.12); border-radius: 16px; }
 .glass-card-hover { transition: transform .22s var(--ease-out), border-color .22s var(--ease-out), background .22s var(--ease-out); }
