@@ -11,9 +11,9 @@ export const site = {
     website: "[WEBSITE]",
     logoMark: "◒",
     colors: {
-      electric: "#5b7cff",
-      cyan: "#55e7e3",
-      violet: "#a78bfa",
+      electric: "#f7c96a",
+      cyan: "#a66cff",
+      violet: "#d7a8ff",
     },
   },
   hero: {
