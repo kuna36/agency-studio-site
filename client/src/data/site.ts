@@ -4,7 +4,7 @@ export const site = {
     shortName: "KK",
     tagline: "BUILD. INNOVATE. DELIVER.",
     description: "We turn ideas, problems and business requirements into practical digital products.",
-    email: "[EMAIL ADDRESS]",
+    email: "kkgroup360@gmail.com",
     phone: "[PHONE NUMBER]",
     whatsapp: "[WHATSAPP NUMBER]",
     location: "[LOCATION]",
