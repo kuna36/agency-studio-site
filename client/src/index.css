@@ -122,6 +122,12 @@ button { cursor: pointer; }
 .data-flow::after { content: ''; position: absolute; top: 0; bottom: 0; left: 0; width: 24%; background: linear-gradient(90deg, transparent, rgba(85,231,227,.35), transparent); animation: dataSweep 4.5s ease-in-out infinite; pointer-events: none; }
 .case-card-visual { transition: transform .45s var(--ease-out), filter .45s var(--ease-out); }
 .glass-card-hover:hover .case-card-visual { transform: scale(1.025); filter: saturate(1.15); }
+.case-study-card { --tilt-x: 0deg; --tilt-y: 0deg; --sheen-x: 50%; position: relative; transform: perspective(1100px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) translateZ(0); transform-style: preserve-3d; will-change: transform; transition: transform .18s var(--ease-out), border-color .28s var(--ease-out), box-shadow .28s var(--ease-out); }
+.case-study-card::before { content: ''; position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0; background: radial-gradient(circle at var(--sheen-x) 20%, rgba(255,255,255,.5), transparent 28%); mix-blend-mode: soft-light; transition: opacity .28s var(--ease-out); }
+.case-study-card:hover, .case-study-card:focus-within { border-color: rgba(31,78,216,.42); box-shadow: 0 26px 60px rgba(16,26,46,.16); }
+.case-study-card:hover::before, .case-study-card:focus-within::before { opacity: .7; }
+.case-study-card > .project-visual { transform: translateZ(18px); }
+.case-study-card > div:last-child { transform: translateZ(10px); }
 .motion-line { transform-origin: left; animation: scanLine 5.5s ease-in-out infinite; }
 .site-shell .text-white { color: #101a2e !important; }
 .site-shell .text-cyan-200, .site-shell .text-cyan-100 { color: #ef6a52 !important; }
@@ -192,6 +198,8 @@ button { cursor: pointer; }
   .process-node { margin-left: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .case-study-card { transform: none !important; transition: none !important; }
+  .case-study-card::before { display: none; }
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
   .reveal { opacity: 1; transform: none; }
 }
